@@ -58,11 +58,6 @@ export function BeforeAfter() {
 
           {/* After */}
           <div className="relative bg-green-50/50 border border-green-100 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
-            <div className="absolute top-4 right-4">
-              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-600 border border-indigo-500/20">
-                gen-cv.pl
-              </span>
-            </div>
             <div>
               <div className="flex items-center justify-between mb-8">
                 <span className="text-3xl text-yellow-500">★★★★★</span>
@@ -80,8 +75,16 @@ export function BeforeAfter() {
                 ))}
               </div>
             </div>
-            <div className="mt-8 pt-4 border-t border-green-100 text-xs font-bold text-[#10B981] uppercase tracking-wider">
-              Po transformacji przez AI
+            <div className="mt-8 pt-4 border-t border-green-100">
+              <a
+                href="https://gen-cv.pl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs font-bold text-[#10B981] hover:text-[#047857] uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Po transformacji przez AI (gen-cv.pl)
+                <span className="material-symbols-outlined text-xs leading-none">open_in_new</span>
+              </a>
             </div>
           </div>
         </div>
