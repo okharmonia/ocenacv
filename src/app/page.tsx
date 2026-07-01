@@ -1,4 +1,5 @@
 import { Hero } from '@/components/Hero'
+import { TestimonialsTicker } from '@/components/TestimonialsTicker'
 import { HowItWorks } from '@/components/HowItWorks'
 import { BeforeAfter } from '@/components/BeforeAfter'
 import { StatsSection } from '@/components/StatsSection'
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <TestimonialsTicker />
       <HowItWorks />
       <StatsSection />
       <CvAssessSection />
