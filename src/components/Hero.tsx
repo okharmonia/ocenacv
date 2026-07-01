@@ -1,4 +1,54 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
 export function Hero() {
+  const [score, setScore] = useState(99)
+  const [showErrors, setShowErrors] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    // 1. Scanning animation
+    const scanInterval = setInterval(() => {
+      // Pick random values to simulate AI scanning process
+      setScore(Math.floor(Math.random() * 75) + 20)
+    }, 60)
+
+    // Stop scanning after 1.2s and count down to final 34
+    const stopTimeout = setTimeout(() => {
+      clearInterval(scanInterval)
+      
+      let current = 99
+      const end = 34
+      
+      const finalInterval = setInterval(() => {
+        if (current === end) {
+          clearInterval(finalInterval)
+          setShowErrors(true) // Reveal errors on final score
+        } else {
+          current = current > end ? current - 1 : current + 1
+          setScore(current)
+        }
+      }, 25)
+    }, 1200)
+
+    // 2. Scroll parallax
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      clearInterval(scanInterval)
+      clearTimeout(stopTimeout)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // Calculate parallax rotation and displacement
+  const rotateDeg = Math.max(-2, Math.min(6, 3 - scrollY * 0.015))
+  const translateY = scrollY * 0.06
+
   return (
     <section className="relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-36 bg-[#0F172A] text-white">
       {/* Background gradients */}
@@ -52,7 +102,12 @@ export function Hero() {
             <div className="absolute inset-0 bg-[#EA580C]/10 blur-[80px] rounded-full"></div>
 
             {/* Resume preview card */}
-            <div className="relative z-10 transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-out">
+            <div 
+              className="relative z-10 transition-all duration-300 ease-out"
+              style={{
+                transform: `rotate(${rotateDeg}deg) translateY(${translateY}px)`,
+              }}
+            >
               <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl w-72 h-[340px] flex flex-col gap-4">
                 <div className="w-1/2 h-3.5 bg-white/20 rounded-full"></div>
                 <div className="w-full h-2 bg-white/10 rounded-full"></div>
@@ -60,15 +115,23 @@ export function Hero() {
                 <div className="w-3/4 h-2 bg-white/10 rounded-full"></div>
                 
                 <div className="mt-6 flex justify-center">
-                  <div className="w-24 h-24 rounded-full border-4 border-[#EA580C] flex flex-col items-center justify-center bg-[#0F172A]">
-                    <span className="text-4xl font-extrabold text-[#EA580C] tracking-tight">34</span>
+                  <div 
+                    className="w-24 h-24 rounded-full border-4 flex flex-col items-center justify-center bg-[#0F172A] transition-all duration-500"
+                    style={{ borderColor: showErrors ? '#EF4444' : '#EA580C' }}
+                  >
+                    <span 
+                      className="text-4xl font-extrabold tracking-tight transition-all duration-500"
+                      style={{ color: showErrors ? '#EF4444' : '#EA580C' }}
+                    >
+                      {score}
+                    </span>
                     <span className="text-[10px] text-slate-400 font-medium leading-none">/ 100</span>
                   </div>
                 </div>
 
-                <div className="mt-4 space-y-2">
-                  <div className="w-full h-1 bg-[#EF4444] rounded-full opacity-80"></div>
-                  <div className="w-5/6 h-1 bg-[#EF4444] rounded-full opacity-80"></div>
+                <div className={`mt-4 space-y-2 transition-all duration-700 ${showErrors ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                  <div className="w-full h-1 bg-[#EF4444] rounded-full opacity-80 shadow-[0_0_8px_rgba(239,68,68,0.4)]"></div>
+                  <div className="w-5/6 h-1 bg-[#EF4444] rounded-full opacity-80 shadow-[0_0_8px_rgba(239,68,68,0.4)]"></div>
                 </div>
               </div>
             </div>
