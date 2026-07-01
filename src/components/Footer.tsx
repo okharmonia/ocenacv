@@ -22,7 +22,7 @@ export function Footer() {
             gen-cv.pl
           </a>
         </div>
-        <p className="text-xs mt-6" style={{ color: '#334155' }}>
+        <p className="text-[11px] mt-6" style={{ color: '#475569' }}>
           &copy; {new Date().getFullYear()} ocenacv.pl · Wszelkie prawa zastrzeżone
         </p>
       </div>

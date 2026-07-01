@@ -25,23 +25,17 @@ export function CtaSection() {
           liczbami i profesjonalnym formatowaniem.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm">
+        <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm md:text-base">
           <div className="flex items-center gap-2" style={{ color: '#C7D2FE' }}>
-            <svg className="w-5 h-5 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <span className="material-symbols-outlined text-green-400 text-lg leading-none">check_circle</span>
             AI dobiera słowa kluczowe pod Twoją branżę
           </div>
           <div className="flex items-center gap-2" style={{ color: '#C7D2FE' }}>
-            <svg className="w-5 h-5 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <span className="material-symbols-outlined text-green-400 text-lg leading-none">check_circle</span>
             Każde zdanie zawiera konkretną wartość i liczby
           </div>
           <div className="flex items-center gap-2" style={{ color: '#C7D2FE' }}>
-            <svg className="w-5 h-5 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <span className="material-symbols-outlined text-green-400 text-lg leading-none">check_circle</span>
             Gotowe CV w 60 sekund — PDF, DOCX, link
           </div>
         </div>
@@ -50,12 +44,10 @@ export function CtaSection() {
           href="https://gen-cv.pl"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-secondary text-base md:text-lg px-10 py-4"
+          className="btn-secondary text-base md:text-lg px-10 py-4 cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-transform"
         >
           Stwórz profesjonalne CV na gen-cv.pl
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-          </svg>
+          <span className="material-symbols-outlined text-lg leading-none">open_in_new</span>
         </a>
 
         <p className="text-xs mt-6" style={{ color: '#818CF8' }}>

@@ -1,19 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════
    ocenacv.pl — Design System
    ═══════════════════════════════════════════════ */
-
-/* Deep Navy — hero bg, authority */
-/* Pure White — card backgrounds */
-/* Slate 50 — section alternators */
-/* Electric Amber (#F97316) — primary CTA */
-/* Danger Red (#EF4444) — bad score */
-/* Success Green (#10B981) — good score */
-/* Indigo (#6366F1) — gen-cv.pl links */
-/* Slate 700 (#334155) — body text */
-/* Slate 400 (#94A3B8) — secondary text */
 
 :root {
   --ocena-navy: #0F172A;
@@ -32,18 +23,50 @@
 }
 
 @theme inline {
-  --color-ocena-navy: #0F172A;
-  --color-ocena-navy-light: #1E293B;
-  --color-ocena-amber: #F97316;
-  --color-ocena-amber-dark: #EA580C;
-  --color-ocena-red: #EF4444;
-  --color-ocena-red-dark: #B91C1C;
-  --color-ocena-green: #10B981;
-  --color-ocena-green-dark: #047857;
-  --color-ocena-indigo: #6366F1;
-  --color-ocena-slate-400: #94A3B8;
-  --color-ocena-slate-200: #E2E8F0;
-  --color-ocena-slate-50: #F1F5F9;
+  --color-primary: #9d4300;
+  --color-primary-container: #f97316;
+  --color-deep-orange: #EA580C;
+  --color-surface: #f8f9ff;
+  --color-on-surface: #0d1c2f;
+  --color-background: #f8f9ff;
+  --color-secondary: #565e74;
+  --color-slate-400: #94A3B8;
+  --color-slate-300: #CBD5E1;
+  --color-slate-200: #E2E8F0;
+  --color-slate-50: #F1F5F9;
+  --color-status-danger: #EF4444;
+  --color-status-success: #10B981;
+  --color-status-warning: #EAB308;
+  --color-surface-container: #e6eeff;
+  --color-surface-container-high: #dde9ff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #d5e3fd;
+  --color-surface-variant: #d5e3fd;
+  --color-tertiary: #494bd6;
+  --color-on-primary-fixed: #341100;
+  --color-on-primary-fixed-variant: #783200;
+  --color-on-secondary-fixed-variant: #3f465c;
+  --color-on-secondary-fixed: #131b2e;
+  --color-on-secondary-container: #5c647a;
+  --color-on-tertiary-fixed-variant: #2f2ebe;
+  --color-on-tertiary-fixed: #07006c;
+  --color-on-tertiary-container: #1304ac;
+  --color-on-background: #0d1c2f;
+  --color-on-surface-variant: #584237;
+  --color-surface-dim: #ccdbf4;
+  --color-surface-bright: #f8f9ff;
+  --color-secondary-container: #dae2fd;
+  --color-inverse-surface: #233144;
+  --color-inverse-on-surface: #ebf1ff;
+  --color-inverse-primary: #ffb690;
+  --color-outline: #8c7164;
+  --color-outline-variant: #e0c0b1;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-on-error: #ffffff;
+  
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 

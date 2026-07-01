@@ -5,3 +5,9 @@ node_modules/
 out/
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+.env*
+stitch_design_system/
+stitch_adaptive_design_system.zip
+RAPORT.md

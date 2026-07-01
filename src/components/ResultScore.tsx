@@ -15,13 +15,6 @@ const SCORE_COLORS = {
   great: { gauge: '#10B981', text: '#059669', bg: '#F0FDF4', border: '#BBF7D0' },
 }
 
-const ONE_LINERS: Record<string, string> = {
-  low: 'Rekruter odrzuci to CV w 6 sekund.',
-  mid: 'Przeciętne CV. Nie wyróżnia się, nie przekonuje.',
-  good: 'Nadaje się do poprawy. Brakuje konkretów.',
-  great: 'Dobre CV. Jeszcze kilka poprawek i będzie świetnie.',
-}
-
 function getScoreTier(score: number): keyof typeof SCORE_COLORS {
   if (score <= 35) return 'low'
   if (score <= 55) return 'mid'
@@ -41,8 +34,7 @@ export function ResultScore({ result }: Props) {
     const animate = (now: number) => {
       const elapsed = now - start
       const progress = Math.min(elapsed / duration, 1)
-      // Ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3)
+      const eased = 1 - Math.pow(1 - progress, 3) // Ease-out cubic
       setDisplayScore(Math.round(eased * result.score))
       if (progress < 1) requestAnimationFrame(animate)
     }
@@ -50,26 +42,36 @@ export function ResultScore({ result }: Props) {
   }, [result.score])
 
   return (
-    <div className="card text-center animate-fade-in-up" style={{ background: colors.bg, borderColor: colors.border, borderWidth: 1, borderStyle: 'solid' }}>
-      <h3 className="font-bold text-lg mb-6" style={{ color: colors.text }}>
-        Twój wynik
-      </h3>
+    <div className="bg-white border border-slate-100 rounded-3xl p-8 md:p-12 text-center shadow-sm max-w-3xl mx-auto animate-fade-in-up">
+      <div className="relative inline-flex items-center justify-center mb-8">
+        <ScoreGauge score={displayScore} maxScore={100} color={colors.gauge} />
+      </div>
 
-      <ScoreGauge score={displayScore} maxScore={100} color={colors.gauge} />
-
-      <p className="text-lg font-semibold mt-4" style={{ color: colors.text }}>
-        {result.score <= 35
-          ? 'Rekruter odrzuci to CV w 6 sekund.'
-          : result.score <= 55
-          ? 'Przeciętne CV. Nie wyróżnia się, nie przekonuje.'
-          : result.score <= 75
-          ? 'Nadaje się do poprawy. Brakuje konkretów.'
-          : 'Dobre CV. Jeszcze kilka poprawek i będzie świetnie.'}
-      </p>
-
-      <p className="text-sm mt-3 max-w-lg mx-auto" style={{ color: '#64748B' }}>
-        {result.oneLiner}
-      </p>
+      <div className="space-y-4">
+        <h1 className="font-extrabold text-2xl md:text-4xl text-slate-900 leading-tight">
+          {result.score <= 35 ? (
+            <>
+              Rekruter odrzuci to CV w <span className="text-[#EF4444] underline decoration-wavy decoration-2">6 sekund</span>
+            </>
+          ) : result.score <= 55 ? (
+            <>
+              Przeciętne CV. <span className="text-[#F97316]">Nie wyróżnia się</span>, nie przekonuje.
+            </>
+          ) : result.score <= 75 ? (
+            <>
+              Nadaje się do poprawy. <span className="text-[#EAB308]">Brakuje konkretów</span>.
+            </>
+          ) : (
+            <>
+              Dobre CV! <span className="text-[#10B981]">Jeszcze kilka poprawek</span> i będzie świetnie.
+            </>
+          )}
+        </h1>
+        
+        <p className="text-sm md:text-base text-slate-500 max-w-lg mx-auto font-medium leading-relaxed">
+          {result.oneLiner}
+        </p>
+      </div>
     </div>
   )
 }

@@ -1,12 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Hero } from '@/components/Hero'
-import { HowItWorks } from '@/components/HowItWorks'
-import { BeforeAfter } from '@/components/BeforeAfter'
-import { StatsSection } from '@/components/StatsSection'
-import { CvAssessSection } from '@/components/CvAssessSection'
-import { CtaSection } from '@/components/CtaSection'
-import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'OceńCV.pl — Darmowa ocena CV przez AI w 10 sekund',
@@ -37,9 +30,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl">
-      <body className="antialiased min-h-screen flex flex-col">
-        {children}
+    <html lang="pl" className="scroll-smooth">
+      <body className="antialiased min-h-screen flex flex-col bg-surface text-on-surface">
+        <header className="fixed top-0 w-full z-50 bg-[#0F172A] border-b border-white/10 shadow-md">
+          <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-4">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#F97316]" style={{ fontSize: '28px' }}>security</span>
+              <span className="font-bold text-lg md:text-xl text-white tracking-tighter">ocenacv.pl</span>
+            </div>
+            <div className="flex items-center gap-6">
+              <nav className="hidden md:flex space-x-8">
+                <a className="text-white hover:text-[#F97316] transition-colors duration-200 font-semibold text-sm" href="#">Start</a>
+                <a className="text-slate-300 hover:text-white transition-colors duration-200 font-semibold text-sm" href="#how">Jak to działa</a>
+                <a className="text-slate-300 hover:text-white transition-colors duration-200 font-semibold text-sm" href="#stats">Statystyki</a>
+              </nav>
+              <button className="bg-[#9d4300] hover:bg-[#F97316] text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95">
+                Zaloguj
+              </button>
+            </div>
+          </div>
+        </header>
+        <div className="flex-1 mt-16">
+          {children}
+        </div>
       </body>
     </html>
   )

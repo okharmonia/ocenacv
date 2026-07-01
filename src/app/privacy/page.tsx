@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Polityka prywatności — OceńCV.pl',
@@ -9,12 +10,12 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen" style={{ background: '#F1F5F9' }}>
       <div className="container-ocena section-padding">
-        <a href="/" className="inline-flex items-center gap-2 text-sm font-medium mb-8 transition-colors" style={{ color: '#F97316' }}>
+        <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium mb-8 transition-colors" style={{ color: '#F97316' }}>
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
           Powrót do strony głównej
-        </a>
+        </Link>
 
         <div className="card max-w-3xl mx-auto prose prose-sm">
           <h1 className="text-2xl font-bold mb-8">Polityka prywatności</h1>
