@@ -2,9 +2,10 @@ export function Footer() {
   return (
     <footer className="py-10 text-center" style={{ background: '#0F172A' }}>
       <div className="container-ocena">
-        <p className="font-bold mb-1" style={{ color: '#F97316' }}>
-          OceńCV.pl
-        </p>
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <img src="/ocena.webp" alt="OceńCV.pl" className="h-6 w-auto object-contain" />
+          <span className="font-bold text-lg text-white tracking-tighter">OceńCV.pl</span>
+        </div>
         <p className="text-xs mb-6" style={{ color: '#64748B' }}>
           Bezpłatna ocena CV · Powered by AI
         </p>

@@ -37,8 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased min-h-screen flex flex-col bg-surface text-on-surface">
         <header className="fixed top-0 w-full z-50 bg-[#0F172A] border-b border-white/10 shadow-md">
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-4">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#F97316]" style={{ fontSize: '28px' }}>security</span>
+            <div className="flex items-center gap-2.5">
+              <img src="/ocena.webp" alt="ocenacv.pl" className="h-7 w-auto object-contain" />
               <span className="font-bold text-lg md:text-xl text-white tracking-tighter">ocenacv.pl</span>
             </div>
             <div className="flex items-center gap-6">
