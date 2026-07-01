@@ -101,7 +101,7 @@ export function Hero() {
                 href="#ocen-cv"
                 className="btn-primary text-base px-8 py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform"
               >
-                Sprawdź свои CV за дармо
+                Sprawdź swoje CV za darmo
                 <span className="material-symbols-outlined leading-none text-sm">arrow_forward</span>
               </a>
             </div>

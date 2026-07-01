@@ -90,10 +90,10 @@ export function UploadForm({ onAssess }: Props) {
                 }}
               >
                 <div className="font-bold text-xs md:text-sm">
-                  {level.key === 'friendly' ? 'Łagodny' : level.key === 'brutal' ? 'Bez litości' : 'Nuklearny'}
+                  {level.label}
                 </div>
                 <div className={`text-[10px] mt-0.5 font-medium leading-none ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
-                  {level.key === 'friendly' ? 'Miło, ale szczerze' : level.key === 'brutal' ? 'Prawda w oczy' : 'Przygotuj się'}
+                  {level.subtitle}
                 </div>
               </button>
             )
