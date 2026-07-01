@@ -15,18 +15,18 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
     name: 'Jan Kowalski',
-    role: 'Frontend Developer',
+    role: 'Magazynier',
     rating: 5,
-    text: 'Po zmianach z gen-cv dostałem 3 zaproszenia na rozmowę w jeden tydzień! Wcześniej była cisza.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+    text: 'Przeniosłem dane ze starego CV i poprawiłem opis obowiązków w magazynie. Od razu dostałem odzew od 3 nowych firm logistycznych!',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 2,
     name: 'Kasia Nowak',
-    role: 'UX/UI Designer',
+    role: 'Asystentka ds. administracji',
     rating: 5,
-    text: 'Brutalny test, ale otworzył mi oczy. Poprawiłam sekcję o projektach i to działa rewelacyjnie!',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face'
+    text: 'Brutalny test, ale otworzył mi oczy. Poprawiłam sekcję o doświadczeniu i w końcu zaproszono mnie na rozmowę rekrutacyjną!',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 3,
@@ -34,63 +34,63 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Python Developer',
     rating: 5,
     text: 'Wskazówki dotyczące formatowania pod ATS to złoto. Moje CV wreszcie przechodzi automatyczną selekcję.',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face'
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 4,
     name: 'Ola Wójcik',
-    role: 'Project Manager',
+    role: 'Sprzedawca / Doradca Klienta',
     rating: 5,
-    text: 'Genialne narzędzie. W 10 sekund dostałam gotową listę błędów, które robiłam w CV od lat.',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+    text: 'Genialne narzędzie. W 10 sekund dostałam gotową listę błędów, poprawiłam opisy i znalazłam dużo lepszą pracę w drogerii.',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 5,
     name: 'Piotr Kamiński',
     role: 'DevOps Engineer',
     rating: 5,
-    text: 'Ocena 34/100 na tym szablonie zabolała, ale po poprawkach mam już nową pracę. Polecam wszystkim!',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+    text: 'Ocena 34/100 na tym starym szablonie zabolała, ale po poprawkach mam już nową pracę. Polecam wszystkim!',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 6,
     name: 'Karolina Lewandowska',
-    role: 'QA Engineer',
+    role: 'Kurier dostawca',
     rating: 5,
-    text: 'Darmowe, szybkie i bez rejestracji. Otrzymałam konkretne uwagi bez owijania w bawełnę.',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face'
+    text: 'Narzędzie pomogło mi ładnie opisać w CV bezszkodową jazdę i doświadczenie z trasami międzynarodowymi. Działa super!',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 7,
     name: 'Mateusz Zieliński',
-    role: 'Data Analyst',
+    role: 'Koordynator logistyki',
     rating: 5,
-    text: 'Super sprawa z tym porównaniem przed/po. Od razu widać, jak pisać o swoich osiągnięciach.',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face'
+    text: 'Super sprawa z tym porównaniem przed/po. Od razu widać, jak opisywać swoje osiągnięcia zawodowe, żeby zdobyć lepszy kontrakt.',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 8,
     name: 'Ania Szymańska',
-    role: 'Marketing Specialist',
+    role: 'Farmaceutka',
     rating: 5,
-    text: 'Dzięki audytowi zmieniłam nudne opisy na język korzyści. Rekruterzy sami piszą na LinkedIn!',
-    avatar: 'https://images.unsplash.com/photo-1489424900224-723b89d9707b?w=100&h=100&fit=crop&crop=face'
+    text: 'Dzięki audytowi moje CV wygląda teraz profesjonalnie. Apteki same zaczęły dzwonić z ofertami pracy!',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 9,
     name: 'Tomek Dąbrowski',
-    role: 'Product Owner',
+    role: 'Pracownik produkcji',
     rating: 5,
-    text: 'Wskaźnik przejrzystości CV otworzył mi oczy na to, jak rekruterzy czytają dokument w 6 sekund.',
-    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&h=100&fit=crop&crop=face'
+    text: 'Proste narzędzie i bez rejestracji. Pomogło mi ładnie wyróżnić moje uprawnienia na wózki widłowe w CV.',
+    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=120&h=120&fit=crop&crop=face'
   },
   {
     id: 10,
     name: 'Monika Kozłowska',
-    role: 'HR Specialist',
+    role: 'Rekruterka',
     rating: 5,
-    text: 'Jako rekruter potwierdzam – uwagi z tego audytu to dokładnie to, na co zwracamy uwagę przy selekcji.',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face'
+    text: 'Jako rekruter potwierdzam – uwagi z tego audytu to dokładnie to, na co zwracamy uwagę przy selekcji kandydatów.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=face'
   }
 ]
 
