@@ -36,9 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-surface text-on-surface">
         <header className="fixed top-0 w-full z-50 bg-[#0F172A] border-b border-white/10 shadow-md">
-          <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-4">
-            <div className="flex items-center gap-2.5">
-              <img src="/ocena.webp" alt="ocenacv.pl" className="h-7 w-auto object-contain" />
+          <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3">
+            <div className="flex items-center gap-3">
+              <img src="/ocena.webp" alt="ocenacv.pl" className="h-10 md:h-12 w-auto object-contain" />
               <span className="font-bold text-lg md:text-xl text-white tracking-tighter">ocenacv.pl</span>
             </div>
             <div className="flex items-center gap-6">
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <div className="flex-1 mt-16">
+        <div className="flex-1 mt-20">
           {children}
         </div>
       </body>
