@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <div className="flex-1 pt-[68px]">
+        <div className="flex-1 pt-[60px] md:pt-[68px]">
           {children}
         </div>
       </body>
