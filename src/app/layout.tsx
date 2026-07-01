@@ -47,9 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <a className="text-slate-300 hover:text-white transition-colors duration-200 font-semibold text-sm" href="#how">Jak to działa</a>
                 <a className="text-slate-300 hover:text-white transition-colors duration-200 font-semibold text-sm" href="#stats">Statystyki</a>
               </nav>
-              <button className="bg-[#9d4300] hover:bg-[#F97316] text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95">
-                Zaloguj
-              </button>
             </div>
           </div>
         </header>
