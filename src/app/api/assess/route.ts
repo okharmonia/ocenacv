@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server'
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
+const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ocenacv.pl'
 
 interface RequestBody {
@@ -30,8 +31,8 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // If no OpenRouter key, return mock data for development
-    if (!OPENROUTER_API_KEY) {
+    // If no API keys, return mock data for development
+    if (!OPENROUTER_API_KEY && !NVIDIA_API_KEY) {
       return Response.json({
         result: mockResult(cvText, targetRole),
         _meta: { elapsedMs: Date.now() - startTime, model: 'mock-dev' },
@@ -44,32 +45,72 @@ export async function POST(req: NextRequest) {
     const roleContext = targetRole ? '\n\nStanowisko na ktore aplikujesz: ' + targetRole : ''
     const userPrompt = 'Przeanalizuj ponizsze CV i daj mi bezlitosna, szczera ocene.' + roleContext + '\n\n=== POCZATEK CV ===\n' + cvText + '\n=== KONIEC CV ==='
 
-    // Call OpenRouter
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': SITE_URL,
-        'X-Title': 'OcenCV.pl',
-      },
-      body: JSON.stringify({
-        model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt },
-        ],
-        response_format: { type: 'json_object' },
-        max_tokens: 4000,
-        temperature: roastLevel === 'nuclear' ? 0.9 : 0.7,
-      }),
-    })
+    let response: Response | null = null
+    let apiUsed = 'NVIDIA'
+    let errorDetails = ''
 
-    if (!response.ok) {
-      const errBody = await response.text().catch(() => '')
-      console.error('OpenRouter error ' + response.status + ':', errBody)
+    // 1. Try NVIDIA API first if key exists
+    if (NVIDIA_API_KEY) {
+      try {
+        response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + NVIDIA_API_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'mistralai/mistral-large-3-675b-instruct-2512',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt },
+            ],
+            response_format: { type: 'json_object' },
+            max_tokens: 2000,
+            temperature: roastLevel === 'nuclear' ? 0.9 : 0.7,
+          }),
+        })
+        if (!response.ok) {
+          errorDetails = await response.text().catch(() => '')
+          console.warn('NVIDIA API failed, falling back to OpenRouter. Status: ' + response.status, errorDetails)
+          response = null
+        }
+      } catch (e) {
+        console.warn('NVIDIA API exception, falling back to OpenRouter:', e)
+        response = null
+      }
+    }
+
+    // 2. Fallback to OpenRouter if NVIDIA failed or key is missing
+    if (!response && OPENROUTER_API_KEY) {
+      apiUsed = 'OpenRouter'
+      response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': SITE_URL,
+          'X-Title': 'OcenCV.pl',
+        },
+        body: JSON.stringify({
+          model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt },
+          ],
+          response_format: { type: 'json_object' },
+          max_tokens: 4000,
+          temperature: roastLevel === 'nuclear' ? 0.9 : 0.7,
+        }),
+      })
+    }
+
+    // If still no response or error, handle failure
+    if (!response || !response.ok) {
+      const status = response ? response.status : 500
+      const errText = response ? await response.text().catch(() => '') : 'No API key configured'
+      console.error('All APIs failed. Last status: ' + status, errText)
       return Response.json(
-        { error: 'AI tymczasowo niedost\u0119pne (' + response.status + '). Spr\u00F3buj za chwil\u0119.' },
+        { error: 'AI tymczasowo niedost\u0119pne (' + status + '). Spr\u00F3buj za chwil\u0119.' },
         { status: 502 }
       )
     }
@@ -104,7 +145,7 @@ export async function POST(req: NextRequest) {
         roasts: Array.isArray(result.roasts) ? result.roasts.slice(0, 5) : [],
         atsBreakdown: Array.isArray(result.atsBreakdown) ? result.atsBreakdown.slice(0, 5) : [],
       },
-      _meta: { elapsedMs: elapsed, model: data?.model || 'unknown' },
+      _meta: { elapsedMs: elapsed, model: data?.model || 'unknown', api: apiUsed },
     })
 
   } catch (error) {
