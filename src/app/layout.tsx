@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   verification: {
-    google: 'google-site-verification-token-placeholder',
+    google: 'FuHB2AbmFtlE8fwA-t2W_Rpwl09je_kkugN1lwT_O9I',
   },
   openGraph: {
     title: 'OceńCV.pl — Sprawdź, czy Twoje CV ma szansę na rozmowę',
