@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ocenacv.pl'),
   title: 'OceńCV.pl — Darmowa ocena CV przez AI w 10 sekund',
   description:
     'Sprawdź swoje CV za darmo. AI analizuje jak prawdziwy rekruter: ocena 0-100, 5 konkretnych uwag. Bez rejestracji, bez zapisywania.',
@@ -17,6 +18,12 @@ export const metadata: Metadata = {
     'doradztwo zawodowe',
   ],
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: 'google-site-verification-token-placeholder',
+  },
   openGraph: {
     title: 'OceńCV.pl — Sprawdź, czy Twoje CV ma szansę na rozmowę',
     description:
@@ -25,6 +32,14 @@ export const metadata: Metadata = {
     siteName: 'OceńCV.pl',
     locale: 'pl_PL',
     type: 'website',
+    images: [
+      {
+        url: '/logo.webp',
+        width: 200,
+        height: 200,
+        alt: 'OceńCV.pl Logo',
+      },
+    ],
   },
 }
 
