@@ -57,7 +57,7 @@ export function RoastCards({ roasts }: Props) {
         {roasts.map((roast, i) => {
           const isDoubleSpan = i === 3 // Make 4th card double span for bento rhythm
           const icon = MATERIAL_ICON_MAP[roast.icon] || 'warning'
-          const recommendation = roast.recommendation || RECOMMENDATION_MAP[roast.icon] || 'Rekomendacja: Popraw ten element, aby podnieść ocenę.'
+          const recommendation = roast.recommendation || RECOMMENDATION_MAP[roast.icon] || 'Popraw ten element, aby podnieść ocenę.'
 
           if (isDoubleSpan) {
             return (
