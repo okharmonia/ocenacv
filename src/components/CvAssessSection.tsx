@@ -24,6 +24,7 @@ export function CvAssessSection() {
   const resultRef = useRef<HTMLDivElement>(null)
   const [loadingMessages, setLoadingMessages] = useState<string[]>([])
   const loadingTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const [lastRole, setLastRole] = useState<string>('')
 
   // Cleanup timer on unmount
   useEffect(() => {
@@ -32,11 +33,30 @@ export function CvAssessSection() {
     }
   }, [])
 
+  const buildGenCvUrl = useCallback(() => {
+    if (!result) return 'https://gen-cv.pl'
+    const dataObj = {
+      score: result.score,
+      role: lastRole,
+      issues: result.roasts.map(r => r.title)
+    }
+    try {
+      const jsonStr = JSON.stringify(dataObj)
+      const base64Data = btoa(encodeURIComponent(jsonStr).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+        return String.fromCharCode(parseInt(p1, 16))
+      }))
+      return `https://gen-cv.pl/?ref=ocenacv&data=${base64Data}`
+    } catch {
+      return `https://gen-cv.pl/?ref=ocenacv&score=${result.score}&role=${encodeURIComponent(lastRole)}`
+    }
+  }, [result, lastRole])
+
   const handleAssess = useCallback(async (
     cvText: string,
     targetRole?: string,
     roastLevel: RoastLevel = 'brutal'
   ) => {
+    setLastRole(targetRole || '')
     setState('loading')
     setError(null)
     setResult(null)
@@ -132,6 +152,25 @@ export function CvAssessSection() {
                       </ul>
                     </div>
                   )}
+
+                  {/* AI Fix CTA Block */}
+                  <div className="bg-[#0F172A] border border-white/10 p-8 rounded-3xl text-center shadow-lg animate-fade-in mt-10">
+                    <h3 className="font-bold text-lg md:text-xl text-white mb-3">
+                      Chcesz automatycznie poprawić te błędy?
+                    </h3>
+                    <p className="text-slate-400 text-sm md:text-base mb-6 max-w-lg mx-auto leading-relaxed">
+                      Przejdź do naszego kreatora <strong className="text-white">gen-cv.pl</strong>. Przeniesiemy tam Twoją ocenę ({result.score}/100) oraz wykryte błędy, aby sztuczna inteligencja wygenerowała dla Ciebie idealne CV dopasowane do systemów ATS.
+                    </p>
+                    <a
+                      href={buildGenCvUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-orange-500/20 transition-all text-sm md:text-base cursor-pointer"
+                    >
+                      <span className="material-symbols-outlined">psychology</span>
+                      Popraw moje CV na gen-cv.pl
+                    </a>
+                  </div>
                 </>
               )}
             </div>
