@@ -54,11 +54,12 @@ export async function POST(req: NextRequest) {
         'X-Title': 'OcenCV.pl',
       },
       body: JSON.stringify({
-        model: 'google/gemma-4-26b-a4b-it:free',
+        model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt },
         ],
+        response_format: { type: 'json_object' },
         max_tokens: 2000,
         temperature: roastLevel === 'nuclear' ? 0.9 : 0.7,
       }),
