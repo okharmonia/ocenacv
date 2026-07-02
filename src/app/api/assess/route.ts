@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         'X-Title': 'OcenCV.pl',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-001',
+        model: 'google/gemma-4-26b-a4b-it:free',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt },
