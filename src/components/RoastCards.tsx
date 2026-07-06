@@ -49,11 +49,11 @@ export function RoastCards({ roasts }: Props) {
   }
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="space-y-8 max-w-4xl mx-auto">
       <h2 className="font-extrabold text-2xl md:text-3xl text-center text-slate-900">
         Największe grzechy Twojego CV
       </h2>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="space-y-6">
         {roasts.map((roast) => {
           const icon = MATERIAL_ICON_MAP[roast.icon] || 'warning'
           const recommendation = roast.recommendation || RECOMMENDATION_MAP[roast.icon] || 'Popraw ten element, aby podnieść ocenę.'
@@ -61,17 +61,17 @@ export function RoastCards({ roasts }: Props) {
           return (
             <div
               key={roast.id}
-              className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#EF4444] transition-all duration-300 group flex flex-col justify-between w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              className="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#EF4444] transition-all duration-300 group flex flex-col md:flex-row gap-6 items-start w-full text-left"
             >
-              <div>
-                <div className="w-12 h-12 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
-                  <span className="material-symbols-outlined text-2xl">{icon}</span>
-                </div>
-                <h3 className="font-bold text-lg text-slate-900 mb-3">{roast.title}</h3>
-                <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-6">{roast.description}</p>
+              <div className="w-12 h-12 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <span className="material-symbols-outlined text-2xl">{icon}</span>
               </div>
-              <div className="pt-4 border-t border-slate-100 italic text-[#EF4444] text-xs md:text-sm font-semibold">
-                Rekomendacja: {recommendation}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-lg text-slate-900 mb-2">{roast.title}</h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-4">{roast.description}</p>
+                <div className="pt-4 border-t border-slate-100 italic text-[#EF4444] text-xs md:text-sm font-semibold">
+                  Rekomendacja: {recommendation}
+                </div>
               </div>
             </div>
           )
