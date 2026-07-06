@@ -5,7 +5,7 @@ import Script from 'next/script'
 
 export function GoogleAnalytics() {
   const [consent, setConsent] = useState<boolean>(false)
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-D8TML51892'
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-MVYST48R3P'
 
   useEffect(() => {
     const checkConsent = () => {
