@@ -16,6 +16,9 @@ interface PageProps {
   }>
 }
 
+const DEFAULT_TITLE = 'Sprawdź, czy Twoje CV ma szansę na rozmowę'
+const DEFAULT_DESC = 'Darmowa, błyskawiczna ocena CV przez AI. Dowiedz się, co rekruter myśli o Twoim CV — bez rejestracji.'
+
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const params = await searchParams
   const score = params.score
@@ -27,7 +30,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     const title = `Moje CV${roleStr} otrzymało ocenę ${score}/100! 💀`
     const description = desc
       ? `Werdykt AI: "${desc}" — Sprawdź swoje CV bez rejestracji na ocenacv.pl.`
-      : 'Darmowa, błyskawiczna ocena CV przez AI. Dowiedz się, co rekruter myśli o Twoim CV — bez rejestracji.'
+      : DEFAULT_DESC
 
     return {
       title,
@@ -49,7 +52,25 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     }
   }
 
-  return {} // Fallback to layout.tsx defaults
+  // Explicitly return default metadata for standard visits to prevent empty metadata overrides
+  return {
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESC,
+    openGraph: {
+      title: DEFAULT_TITLE,
+      description: DEFAULT_DESC,
+      url: 'https://ocenacv.pl',
+      siteName: 'ocenacv.pl',
+      images: [
+        {
+          url: '/logo.webp',
+          width: 200,
+          height: 200,
+          alt: 'ocenacv.pl Logo',
+        },
+      ],
+    },
+  }
 }
 
 export default function Home() {
