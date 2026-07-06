@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import type { AssessResult, RoastLevel } from '@/lib/types'
 import { UploadForm } from './UploadForm'
 import { ResultScore } from './ResultScore'
+import { ShareResult } from './ShareResult'
 import { RoastCards } from './RoastCards'
 
 type AppState = 'upload' | 'loading' | 'result'
@@ -133,6 +134,11 @@ export function CvAssessSection() {
               {result && (
                 <>
                   <ResultScore result={result} />
+                  <ShareResult
+                    score={result.score}
+                    oneLiner={result.oneLiner}
+                    targetRole={lastRole}
+                  />
                   <RoastCards roasts={result.roasts} />
                   {result.atsBreakdown && (
                     <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
