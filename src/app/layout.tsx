@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import { CookieBanner } from '@/components/CookieBanner'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ocenacv.pl'),
@@ -50,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-surface text-on-surface">
+        <GoogleAnalytics />
         <header className="fixed top-0 w-full z-50 bg-[#0F172A] border-b border-white/10 shadow-md">
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3">
             <div className="flex items-center gap-3">
@@ -68,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="flex-1 pt-[60px] md:pt-[68px]">
           {children}
         </div>
+        <CookieBanner />
       </body>
     </html>
   )
