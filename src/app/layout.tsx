@@ -5,9 +5,9 @@ import { CookieBanner } from '@/components/CookieBanner'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ocenacv.pl'),
-  title: 'OceńCV.pl — Darmowa ocena CV przez AI w 10 sekund',
+  title: 'Sprawdź, czy Twoje CV ma szansę na rozmowę',
   description:
-    'Sprawdź swoje CV za darmo. AI analizuje jak prawdziwy rekruter: ocena 0-100, 5 konkretnych uwag. Bez rejestracji, bez zapisywania.',
+    'Darmowa, błyskawiczna ocena CV przez AI. Dowiedz się, co rekruter myśli o Twoim CV — bez rejestracji.',
   keywords: [
     'ocena CV',
     'darmowa ocena CV',
@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     google: 'FuHB2AbmFtlE8fwA-t2W_Rpwl09je_kkugN1lwT_O9I',
   },
   openGraph: {
-    title: 'OceńCV.pl — Sprawdź, czy Twoje CV ma szansę na rozmowę',
+    title: 'Sprawdź, czy Twoje CV ma szansę na rozmowę',
     description:
       'Darmowa, błyskawiczna ocena CV przez AI. Dowiedz się, co rekruter myśli o Twoim CV — bez rejestracji.',
     url: 'https://ocenacv.pl',
-    siteName: 'OceńCV.pl',
+    siteName: 'ocenacv.pl',
     locale: 'pl_PL',
     type: 'website',
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: '/logo.webp',
         width: 200,
         height: 200,
-        alt: 'OceńCV.pl Logo',
+        alt: 'ocenacv.pl Logo',
       },
     ],
   },

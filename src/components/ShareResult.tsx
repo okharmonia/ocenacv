@@ -13,15 +13,17 @@ export function ShareResult({ score, oneLiner, targetRole }: Props) {
   const [copied, setCopied] = useState(false)
 
   const roleText = targetRole ? ` na stanowisko ${targetRole}` : ''
-  const shareText = `Moje CV${roleText} otrzymało ocenę ${score}/100 na ocenacv.pl! 💀\n\nWerdykt AI: "${oneLiner}"\n\nSprawdź swoje CV bez rejestracji na https://ocenacv.pl`
+  const cleanDesc = oneLiner.replace(/"/g, '').slice(0, 120)
+  const shareUrl = `https://ocenacv.pl/?score=${score}${targetRole ? `&role=${encodeURIComponent(targetRole)}` : ''}&desc=${encodeURIComponent(cleanDesc)}`
+  const shareText = `Moje CV${roleText} otrzymało ocenę ${score}/100 na ocenacv.pl! 💀\n\nWerdykt AI: "${oneLiner}"\n\nSprawdź swoje CV bez rejestracji: ${shareUrl}`
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Ocena CV z ocenacv.pl',
-          text: shareText,
-          url: 'https://ocenacv.pl',
+          title: `Moje CV otrzymało ocenę ${score}/100! 💀`,
+          text: `Werdykt AI: "${oneLiner}"`,
+          url: shareUrl,
         })
       } catch (err) {
         // user cancelled or fallback
@@ -41,7 +43,7 @@ export function ShareResult({ score, oneLiner, targetRole }: Props) {
   }
 
   const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`
-  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://ocenacv.pl')}`
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
 
   return (
     <div className="flex justify-center mt-6">
